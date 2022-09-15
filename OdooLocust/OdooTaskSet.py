@@ -129,3 +129,7 @@ class OdooGenericTaskSet(OdooTaskSet):
                 ids = model.search(domain or [], limit=80, offset=offset, context=context)
             if ids:
                 model.search_read([('id', 'in', ids)], self.kanban_fields, context=context)
+    
+    @task(1)
+    def stop(self):
+        self.interrupt()
