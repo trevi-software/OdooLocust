@@ -89,11 +89,11 @@ class GenericTest(OdooLocustUser):
     login = "admin"
     password = "secure_password"
     port = 443
-    protocol = "jsonrpcs"
+    protocol = "jsonrpc+ssl"
 
     @task(10)
     def read_partners(self):
-        cust_model = self.client.get_model('res.partner')
+        cust_model = self.client.env['res.partner']
         cust_ids = cust_model.search([], limit=80)
         prtns = cust_model.read(cust_ids, ['name'])
 
