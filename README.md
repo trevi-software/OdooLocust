@@ -8,6 +8,54 @@ An Odoo load testing solution, using odooRPC and Locust. Locust API changed a bi
 * Locust: <a href="http://locust.io">locust.io</a>
 * Odoo: <a href="https://odoo.com">odoo.com</a>
 
+# Quick Start
+
+Assuming you have a local odoo instance already up and running you can see the result of the sample loads included in this project:
+
+1. Clone this repo
+
+```
+git clone https://github.com/trevi-software/OdooLocust.git
+```
+
+2. Create a python virtual environment and install required packages
+```
+cd OdooLocust
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+3. Modify the connection values for your local odoo instance
+```
+vi OdooLocust/samples/Seller.py
+vi OdooLocust/samples/GenericTest.py
+```
+
+4. To Run though the sale order load
+```
+locust -f OdooLocust/samples/Seller.py --config OdooLocust/samples/locust.conf
+```
+
+OR
+
+4. To run through a bunch of users clicking on menu items randomly
+```
+locust -f OdooLocust/samples/GenericTest.py --config OdooLocust/samples/locust.conf
+```
+
+OR
+
+4. To run both loads at the same time
+```
+locust -f OdooLocust/samples --config OdooLocust/samples/locust.conf
+```
+
+5. Open your web browser, point it to the locust instance you started and fire up the workload
+```
+http://localost:8089/
+```
+
 # HowTo
 
 To load test Odoo, you create tests like you'll have done it with Locust:
