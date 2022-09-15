@@ -1,2 +1,2 @@
-OdooRPC==0.8.0
+git+https://github.com/OCA/odoorpc@master
 locust==2.12.0
